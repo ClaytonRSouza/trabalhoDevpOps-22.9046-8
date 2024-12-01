@@ -1,0 +1,20 @@
+├── docker-compose.yml
+├── estrutura.txt
+├── exporter
+│   └── mysqld_exporter.env
+├── flask
+│   ├── Dockerfile_flask
+│   ├── app.py
+│   ├── requirements.txt
+│   └── test_flask_app.py
+├── grafana
+│   ├── Dockerfile_grafana
+│   ├── dashboards
+│   │   └── mariadb_dashboard.json
+│   └── provisioning
+│       ├── dashboard.yml
+│       └── datasource.yml
+├── mariadb
+│   └── Dockerfile_mariadb
+└── prometheus
+    └── prometheus.yml
