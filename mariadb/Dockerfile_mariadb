@@ -1,4 +1,5 @@
 # Dockerfile para MariaDB
+# Salve este arquivo como Dockerfile.mariadb na raiz do projeto
 
 # Dockerfile (MariaDB)
 FROM mariadb:10.5
