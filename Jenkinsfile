@@ -12,7 +12,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 // Clona o repositório do Git
-                git 'https://github.com/usuario/meu-repositorio.git'
+                git 'https://github.com/ClaytonRSouza/trabalhoDevpOps-22.9046-8.git'
             }
         }
 
