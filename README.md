@@ -24,13 +24,13 @@ pytest: Framework de testes para validar o comportamento da aplicação Flask.
 ## Passo a Passo para Rodar o Ambiente  
 ### 1. Clone o Repositório  
 Execute o comando abaixo para clonar o repositório para sua máquina local:  
-  
+```bash
 git clone https://github.com/ClaytonRSouza/trabalhoDevpOps-22.9046-8.git  
 cd trabalhoDevpOps-22.9046-8  
   
 ### 2. Construa os Containers com Docker Compose  
 Com o repositório clonado, execute o seguinte comando para construir as imagens e iniciar os containers:  
-  
+```bash
 docker-compose up --build  
 
 Esse comando vai construir as imagens necessárias e subir os containers para os seguintes serviços:  
