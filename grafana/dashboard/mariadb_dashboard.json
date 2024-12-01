@@ -1,0 +1,40 @@
+{
+    "dashboard": {
+        "id": null,
+        "uid": null,
+        "title": "Flask App Metrics",
+        "tags": [],
+        "timezone": "browser",
+        "schemaVersion": 16,
+        "version": 0,
+        "refresh": "5s",
+        "panels": [
+            {
+                "type": "graph",
+                "title": "HTTP Requests",
+                "targets": [
+                    {
+                        "expr": "flask_http_request_total",
+                        "interval": "",
+                        "legendFormat": "{{handler}}",
+                        "refId": "A"
+                    }
+                ],
+                "id": 1
+            },
+            {
+                "type": "graph",
+                "title": "Database Connections",
+                "targets": [
+                    {
+                        "expr": "mysql_global_status_connections",
+                        "interval": "",
+                        "legendFormat": "{{instance}}",
+                        "refId": "A"
+                    }
+                ],
+                "id": 2
+            }
+        ]
+    }
+}
