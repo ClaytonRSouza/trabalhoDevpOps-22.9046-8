@@ -4,15 +4,16 @@ pipeline {
     environment {
         DOCKER_IMAGE = "my-flask-app"
         DOCKER_TAG = "latest"
-        REGISTRY = "my-docker-registry" // Substitua pelo seu registro Docker
-        DOCKER_CREDENTIALS_ID = "dockerhub-credentials" // ID das credenciais Docker armazenadas no Jenkins
+        REGISTRY = "my-docker-registry"
+        DOCKER_CREDENTIALS_ID = "dockerhub-credentials"
+        GIT_CREDENTIALS_ID = "github-ssh-credentials-id"  // Adicionando as credenciais do GitHub
     }
 
     stages {
         stage('Clone Repository') {
             steps {
-                // Clona o repositório do Git
-                git 'https://github.com/ClaytonRSouza/trabalhoDevpOps-22.9046-8.git'
+                // Clona o repositório do Git usando SSH
+                git credentialsId: "${GIT_CREDENTIALS_ID}", url: 'git@github.com:ClaytonRSouza/trabalhoDevpOps-22.9046-8.git', branch: 'main'
             }
         }
 
@@ -29,8 +30,8 @@ pipeline {
             steps {
                 // Constrói as imagens Docker para a aplicação Flask e para o MariaDB Exporter
                 script {
-                    sh 'docker build -t ${REGISTRY}/${DOCKER_IMAGE}:${DOCKER_TAG} -f Dockerfile_flask_app .'
-                    sh 'docker build -t ${REGISTRY}/mariadb_exporter:${DOCKER_TAG} -f Dockerfile_mariadb_exporter .'
+                    sh "docker build -t ${REGISTRY}/${DOCKER_IMAGE}:${DOCKER_TAG} -f Dockerfile_flask_app ."
+                    sh "docker build -t ${REGISTRY}/mariadb_exporter:${DOCKER_TAG} -f Dockerfile_mariadb_exporter ."
                 }
             }
         }
@@ -40,8 +41,8 @@ pipeline {
                 // Realiza o push das imagens Docker para o registro
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_CREDENTIALS_ID}") {
-                        sh 'docker push ${REGISTRY}/${DOCKER_IMAGE}:${DOCKER_TAG}'
-                        sh 'docker push ${REGISTRY}/mariadb_exporter:${DOCKER_TAG}'
+                        sh "docker push ${REGISTRY}/${DOCKER_IMAGE}:${DOCKER_TAG}"
+                        sh "docker push ${REGISTRY}/mariadb_exporter:${DOCKER_TAG}"
                     }
                 }
             }
