@@ -60,22 +60,22 @@ git clone https://github.com/ClaytonRSouza/trabalhoDevpOps-22.9046-8.git
 cd trabalhoDevpOps-22.9046-8
 ### Construa os containers com o Docker Compose:
 
-Copiar código
-docker-compose up --build
-Esse comando irá construir as imagens necessárias e levantar os containers para o Flask, MariaDB, Prometheus, Grafana e MySQL Exporter.
+Copiar código  
+docker-compose up --build  
+Esse comando irá construir as imagens necessárias e levantar os containers para o Flask, MariaDB, Prometheus, Grafana e MySQL Exporter.  
 
 ### Acesse a aplicação web:
 
-Flask (API): Está disponível em http://localhost:5000/.
-Grafana: Está disponível em http://localhost:3000/. O login padrão é:
-Usuário: admin
-Senha: admin
-Prometheus: Está disponível em http://localhost:9090/.
+Flask (API): Está disponível em http://localhost:5000/.  
+Grafana: Está disponível em http://localhost:3000/. O login padrão é:  
+Usuário: admin  
+Senha: admin  
+Prometheus: Está disponível em http://localhost:9090/.  
 
 ### Acessando os Dashboards no Grafana:
 
-Após o Docker Compose concluir a configuração, a dashboard configurada será acessível no Grafana.
-Você deve ver o dashboard de MariaDB ou Prometheus.
+Após o Docker Compose concluir a configuração, a dashboard configurada será acessível no Grafana.  
+Você deve ver o dashboard de MariaDB ou Prometheus.  
 
 ## Jenkins (CI/CD Pipeline)
 Acesse o Jenkins em http://localhost:8080/.
