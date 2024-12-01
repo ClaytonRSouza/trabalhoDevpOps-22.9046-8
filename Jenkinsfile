@@ -19,14 +19,10 @@ pipeline {
             steps {
                 script {
                     // Construir as imagens Docker para cada serviço
-                    sh '''
-                        docker compose build
-                    '''
+                    sh 'docker-compose build'  // Certifique-se de usar o comando correto com `docker-compose`
 
                     // Subir os containers do Docker com Docker Compose
-                    sh '''
-                        docker compose up -d
-                    '''
+                    sh 'docker-compose up -d'
                 }
             }
         }
@@ -34,9 +30,16 @@ pipeline {
         stage('Rodar Testes') {
             steps {
                 script {
-                    // Rodar os testes com o pytest ou qualquer outra ferramenta de testes
-                    sh 'sleep 40'  // Ajuste o tempo de espera conforme necessário
-                    sh 'docker compose run --rm test'
+                    // Aguardar que os containers estejam prontos
+                    sh 'sleep 40'  // Ajuste o tempo de espera conforme necessário, mas prefira uma verificação mais confiável
+
+                    // Verificar se o serviço de testes está disponível antes de rodar os testes
+                    sh '''
+                        docker-compose exec flask curl --fail http://localhost:5000 || exit 1
+                    '''  // Adapte o comando conforme o seu serviço (a URL pode ser diferente)
+
+                    // Rodar os testes no container adequado
+                    sh 'docker-compose run --rm flask pytest /flask/test_app.py'  // Ajuste o caminho para o arquivo de teste
                 }
             }
         }
