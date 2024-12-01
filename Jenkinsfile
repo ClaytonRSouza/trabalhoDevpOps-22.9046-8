@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/SeuUsuario/Trabalho_DevOps_RA.git'
+                git 'https://github.com/ClaytonRSouza/trabalhoDevpOps-22.9046-8.git'
             }
         }
         stage('Run Tests') {
