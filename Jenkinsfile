@@ -12,8 +12,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                // Clona o repositório do Git usando SSH
-                git credentialsId: "${GIT_CREDENTIALS_ID}", url: 'git@github.com:ClaytonRSouza/trabalhoDevpOps-22.9046-8.git', branch: 'main'
+                git credentialsId: 'github-ssh-credentials-id', url: 'git@github.com:ClaytonRSouza/trabalhoDevpOps-22.9046-8.git', branch: 'main'
             }
         }
 
