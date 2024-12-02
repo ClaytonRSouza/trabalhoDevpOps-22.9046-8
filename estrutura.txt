@@ -1,3 +1,6 @@
+.
+├── Jenkinsfile
+├── README.md
 ├── docker-compose.yml
 ├── estrutura.txt
 ├── exporter
@@ -14,6 +17,14 @@
 │   └── provisioning
 │       ├── dashboard.yml
 │       └── datasource.yml
+├── imagens
+│   ├── imagem1.png
+│   ├── imagem2.png
+│   ├── imagem3.png
+│   ├── imagem4.png
+│   ├── imagem5.png
+│   ├── imagem6.png
+│   └── imagem7.png
 ├── mariadb
 │   └── Dockerfile_mariadb
 └── prometheus
