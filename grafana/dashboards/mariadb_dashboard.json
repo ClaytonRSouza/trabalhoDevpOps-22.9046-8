@@ -1,6 +1,6 @@
 {
     "uid": "simple_dashboard",
-    "title": "Desempenho HTTP - Métricas Padrão",
+    "title": "Desempenho HTTP - Análise de Métricas",
     "tags": [
         "HTTP",
         "Prometheus",
@@ -12,7 +12,7 @@
     "panels": [
         {
             "type": "graph",
-            "title": "Taxa de Requisições HTTP",
+            "title": "Taxa de Solicitações HTTP",
             "datasource": "Prometheus",
             "gridPos": {
                 "x": 0,
@@ -23,7 +23,7 @@
             "targets": [
                 {
                     "expr": "rate(prometheus_http_requests_total[1m])",
-                    "legendFormat": "Requisições/s",
+                    "legendFormat": "Solicitações/s",
                     "refId": "A"
                 }
             ],
@@ -33,7 +33,7 @@
         },
         {
             "type": "graph",
-            "title": "Latência Média de Requisições",
+            "title": "Tempo Médio de Resposta",
             "datasource": "Prometheus",
             "gridPos": {
                 "x": 12,
@@ -44,7 +44,7 @@
             "targets": [
                 {
                     "expr": "rate(prometheus_http_request_duration_seconds_sum[1m]) / rate(prometheus_http_request_duration_seconds_count[1m])",
-                    "legendFormat": "Latência Média (s)",
+                    "legendFormat": "Tempo Médio (s)",
                     "refId": "B"
                 }
             ],
@@ -54,7 +54,7 @@
         },
         {
             "type": "graph",
-            "title": "Requisições HTTP em Andamento",
+            "title": "Solicitações HTTP Ativas",
             "datasource": "Prometheus",
             "gridPos": {
                 "x": 0,
@@ -65,7 +65,7 @@
             "targets": [
                 {
                     "expr": "promhttp_metric_handler_requests_in_flight",
-                    "legendFormat": "Em andamento",
+                    "legendFormat": "Ativas",
                     "refId": "C"
                 }
             ],
@@ -75,7 +75,7 @@
         },
         {
             "type": "graph",
-            "title": "Requisições HTTP - Taxa de Erro",
+            "title": "Taxa de Erros em Solicitações HTTP",
             "datasource": "Prometheus",
             "gridPos": {
                 "x": 12,
@@ -86,7 +86,7 @@
             "targets": [
                 {
                     "expr": "rate(prometheus_http_requests_total{status!~'2..'}[1m])",
-                    "legendFormat": "Taxa de Erro",
+                    "legendFormat": "Taxa de Erros",
                     "refId": "D"
                 }
             ],
